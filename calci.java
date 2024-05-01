@@ -2,37 +2,53 @@ import java.util.Scanner;
 
 public class calci {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        double num1, num2, result;
-        char operator;
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
-        num1 = input.nextDouble();
+        System.out.println("first number:");
+        double num1 = scanner.nextDouble();
 
-        System.out.print("Enter an operator (+, -, *, /): ");
-        operator = input.next().charAt(0);
+        System.out.println("second number:");
+        double num2 = scanner.nextDouble();
 
-        System.out.print("Enter second number: ");
-        num2 = input.nextDouble();
+        System.out.println("operation (+, -, *, /, sqrt):");
+        String operation = scanner.next();
 
-        if (operator == '+') {
-            result = num1 + num2;
-        } else if (operator == '-') {
-            result = num1 - num2;
-        } else if (operator == '*') {
-            result = num1 * num2;
-        } else if (operator == '/') {
-            if (num2 != 0) {
-                result = num1 / num2;
-            } else {
-                System.out.println("Error: Division by zero is not allowed.");
+        double result = 0;
+
+        switch (operation) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error! Division by zero.");
+                    return;
+                }
+                break;
+            case "sqrt":
+                if (num1 >= 0) {
+                    result = Math.sqrt(num1);
+                } else {
+                    System.out.println("Cannot calculate square root of a negative number.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Invalid operation.");
                 return;
-            }
-        } else {
-            System.out.println("Error: Invalid operator.");
-            return;
         }
 
-        System.out.println("Result: " + result);
+        System.out.println("Answer" + result);
+
+        scanner.close();
     }
 }
+
