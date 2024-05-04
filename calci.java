@@ -1,7 +1,8 @@
-import java.util.Scanner;
+iimport java.util.Scanner;
 
 public class calci {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("first number:");
@@ -10,7 +11,7 @@ public class calci {
         System.out.println("second number:");
         double num2 = scanner.nextDouble();
 
-        System.out.println("operation (+, -, *, /, sqrt):");
+        System.out.println("operation (+, -, *, /, sqrt, cbrt, pow):");
         String operation = scanner.next();
 
         double result = 0;
@@ -29,7 +30,7 @@ public class calci {
                 if (num2 != 0) {
                     result = num1 / num2;
                 } else {
-                    System.out.println("Error! Division by zero.");
+                    System.out.println("Division by zero.");
                     return;
                 }
                 break;
@@ -41,14 +42,19 @@ public class calci {
                     return;
                 }
                 break;
+            case "cbrt":
+                result = Math.cbrt(num1);
+                break;
+            case "pow":
+                result = Math.pow(num1, num2);
+                break;
             default:
                 System.out.println("Invalid operation.");
                 return;
         }
 
-        System.out.println("Answer" + result);
+        System.out.println("Answer: " + result);
 
         scanner.close();
     }
 }
-
