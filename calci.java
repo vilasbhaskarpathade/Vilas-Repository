@@ -1,8 +1,7 @@
-iimport java.util.Scanner;
+import java.util.Scanner;
 
 public class calci {
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("first number:");
@@ -11,7 +10,7 @@ public class calci {
         System.out.println("second number:");
         double num2 = scanner.nextDouble();
 
-        System.out.println("operation (+, -, *, /, sqrt, cbrt, pow):");
+        System.out.println("operation (+, -, *, /, sqrt, cbrt, pow, !):");
         String operation = scanner.next();
 
         double result = 0;
@@ -48,6 +47,9 @@ public class calci {
             case "pow":
                 result = Math.pow(num1, num2);
                 break;
+            case "!":
+                result = factorial((int) num1);
+                break;
             default:
                 System.out.println("Invalid operation.");
                 return;
@@ -56,5 +58,15 @@ public class calci {
         System.out.println("Answer: " + result);
 
         scanner.close();
+    }
+
+    public static double factorial(int n) {
+        if (n == 0)
+            return 1;
+        double result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
     }
 }
