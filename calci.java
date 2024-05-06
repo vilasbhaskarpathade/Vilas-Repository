@@ -10,7 +10,7 @@ public class calci {
         System.out.println("second number:");
         double num2 = scanner.nextDouble();
 
-        System.out.println("operation (+, -, *, /, sqrt, cbrt, pow, !):");
+        System.out.println("operation (+, -, *, /, %, sqrt, cbrt, pow, !):");
         String operation = scanner.next();
 
         double result = 0;
@@ -32,6 +32,9 @@ public class calci {
                     System.out.println("Division by zero.");
                     return;
                 }
+                break;
+            case "%":
+                result = num1 % num2;
                 break;
             case "sqrt":
                 if (num1 >= 0) {
